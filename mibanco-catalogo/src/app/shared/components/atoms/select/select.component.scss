@@ -6,7 +6,6 @@
     justify-content: space-between;
     gap: 0.625rem;
     border-radius: 0.5rem;
-    border: 1px solid var(--border-border-neutral-secondary);
     background: var(--surface-surface-reverse);
     cursor: pointer;
     position: relative;
@@ -43,7 +42,6 @@
     margin-top: 0.5rem;
     border-radius: 0.5rem;
     background-color: var(--surface-surface-reverse);
-    border: 1px solid var(--border-border-neutral-secondary);
     flex-direction: column;
     position: absolute;
     top: 100%;

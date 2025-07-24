@@ -1,16 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardComponent } from './card.component';
+import { CardModule } from 'primeng/card';
 
 describe('CardComponent', () => {
   let component: CardComponent;
   let fixture: ComponentFixture<CardComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [CardComponent]
-    })
-    .compileComponents();
+    TestBed.configureTestingModule({
+      imports: [
+        CardComponent,
+        CardModule
+      ] // Standalone va en imports
+    }).compileComponents();
     
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
