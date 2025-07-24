@@ -12,6 +12,15 @@ export const routes: Routes = [
         remoteEntry: 'http://localhost:4201/remoteEntry.js',
       }).then(m => m.AppModule),
   },
+  {
+    path: 'catalogo',
+    loadChildren: () =>
+      loadRemoteModule({
+        exposedModule: './Module',
+        type: 'module',
+        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+      }).then(m => m.AppModule),
+  },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
