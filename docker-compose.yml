@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  shell:
+    build: ./mibanco-shell
+    ports:
+      - "4200:80"
+      - "4440:443"
+
+  cotizador:
+    build: ./mibanco-cotizador
+    ports:
+      - "4201:80"
+      - "4441:443"
+
+  catalogo:
+    build: ./mibanco-catalogo
+    ports:
+      - "4202:80"
+      - "4442:443"
