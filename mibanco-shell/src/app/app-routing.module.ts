@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation-runtime';
-import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent, // Padre
+    component: LayoutComponent, // Padre
     children: [
       {
-        path: 'cotizador',
+        path: 'micro-co',
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',
@@ -18,7 +18,7 @@ const routes: Routes = [
           }).then(m => m.AppModule),
       },
       {
-        path: 'catalogo',
+        path: 'micro-ca',
         loadChildren: () =>
           loadRemoteModule({
             type: 'module',
@@ -26,7 +26,7 @@ const routes: Routes = [
             exposedModule: './Module',
           }).then(m => m.AppModule),
       },
-      { path: '', redirectTo: '', pathMatch: 'full' },
+      { path: '', redirectTo: 'micro-ca', pathMatch: 'full' },
     ],
   },
 ];
