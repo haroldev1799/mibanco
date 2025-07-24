@@ -1,0 +1,9 @@
+<div class="container">
+    <label class="container__label" [for]="data.name">{{ data.label }}</label>
+    @if (data.required) {
+        <span class="container__span">*</span>
+    }
+    @if (data.tooltip) {
+        <app-tooltip [data]="data.tooltip" />
+    }
+</div>

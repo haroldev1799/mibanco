@@ -2,6 +2,18 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
+    "baseUrl": "./",
+		"paths": {
+			"@core/*": ["src/app/core/*"],
+			"@domain/*": ["src/app/domain/*"],
+			"@infrastructure/*": ["src/app/infrastructure/*"],
+			"@layout/*": ["src/app/layout/*"],
+			"@components/*": ["src/app/shared/components/*"],
+			"@shared/*": ["src/app/shared/*"],
+			"@assets/*": ["src/assets/*"],
+			"@modules/*": ["src/app/modules/*"],
+			"@environmet/*": ["src/environments/*"]
+		},
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

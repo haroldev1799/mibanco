@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+
+    &__label {
+        color: var(--text-text-neutral-primary);
+        font-size: 0.875rem;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;  
+    }
+    
+    &__span {
+        color: var(--text-text-destructive-default);
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+}

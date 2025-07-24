@@ -1,0 +1,34 @@
+<div
+    class="container"
+    [ngClass]="{
+        container__error: error,
+        container__disabled: readonly,
+    }">
+    <ng-content></ng-content>
+    <input
+        #input
+        class="container__input"
+        [ngClass]="{
+            'container__input--disabled': readonly,
+        }"
+        [readOnly]="readonly"
+        [type]="data.type"
+        [name]="data.name"
+        [id]="data.name"
+        [value]="data.value"
+        [placeholder]="data.placeholder"
+        (input)="handleChange($event)"
+        (focus)="handleFocus()"
+        autocomplete="off" />
+    @if (percentage) {
+        <label class="container__percentage">%</label>
+    }
+
+    @if (disabledHandleClear && data.clear) {
+        <svg class="container__svg" (click)="handleClear($event)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+                d="M12.1966 3.80323C11.9366 3.54323 11.5166 3.54323 11.2566 3.80323L7.99656 7.05656L4.73656 3.79656C4.47656 3.53656 4.05656 3.53656 3.79656 3.79656C3.53656 4.05656 3.53656 4.47656 3.79656 4.73656L7.05656 7.99656L3.79656 11.2566C3.53656 11.5166 3.53656 11.9366 3.79656 12.1966C4.05656 12.4566 4.47656 12.4566 4.73656 12.1966L7.99656 8.93656L11.2566 12.1966C11.5166 12.4566 11.9366 12.4566 12.1966 12.1966C12.4566 11.9366 12.4566 11.5166 12.1966 11.2566L8.93656 7.99656L12.1966 4.73656C12.4499 4.48323 12.4499 4.05656 12.1966 3.80323Z"
+                [attr.fill]="error ? 'var(--icon-icon-brand-destructive-default)' : 'var(--icon-icon-brand-primary)'" />
+        </svg>
+    }
+</div>
