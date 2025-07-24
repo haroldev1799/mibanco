@@ -1,102 +1,70 @@
-.container {
-    display: flex;
-    height: 2.75rem;
-    padding: 0.75rem 1rem;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.625rem;
-    border-radius: 0.5rem;
-    border: 1px solid var(--border-border-neutral-secondary);
-    background: var(--surface-surface-reverse);
-    cursor: pointer;
-    position: relative;
+::ng-deep .p-dropdown {
+  border-radius: 8px !important;
+  min-height: 48px;
+  min-width: 205px;
+  width: 100% !important;
+  border: 1px solid var(--neutral-300) !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  height: 40px !important;
+  caret-color: var(--neutral-250) !important;
+  color: var(--text-primary) !important;
+  background: var(--white) !important;
 
-    &.disabled {
-        cursor: default;
-        background: var(--surface-inputs-surface-neutral-inputs);
+  &::placeholder {
+    color: var(--neutral-500) !important;
+  }
+
+  &:focus,
+  &:not(.p-disabled).p-focus {
+    border: 1px solid var(--neutral-700) !important;
+    box-shadow: none !important;
+  }
+
+  &.invalid {
+    border: 1px solid var(--primary-400) !important;
+    caret-color: var(--primary-400) !important;
+
+    &::placeholder {
+      color: var(--neutral-500) !important;
     }
+  }
 
-    &__error {
-        border: 1px solid var(--border-border-destructive);
-    }
-
-    &__span {
-        color: var(--text-text-neutral-muted);
-        font-size: 0.875rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-
-        &-active {
-            color: var(--text-text-neutral-primary);
-        }
-
-        &-inactive {
-            color: var(--text-text-neutral-muted);
-        }
-    }
+  &::placeholder {
+    color: var(--white) !important;
+  }
 }
 
-.options {
-    display: none;
-    width: 100%;
-    margin-top: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: var(--surface-surface-reverse);
-    border: 1px solid var(--border-border-neutral-secondary);
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    max-height: 18.75rem;
-    overflow-y: auto;
-    min-width: fit-content;
+::ng-deep .p-dropdown-filter:enabled:focus {
+  border-color: var(--neutral-700) !important;
+}
 
-    &__option {
-        padding: 0.5rem 1rem;
-        margin: 0.25rem 0.25rem 0 0.25rem;
-        color: var(--text-text-neutral-primary);
-        font-size: 0.875rem;
-        border-radius: 0.5rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
+::ng-deep .p-dropdown-item-check-icon {
+  color: var(--primary-500) !important;
+}
 
-        &:hover {
-            color: var(--text-text-brand-primary);
-            background-color: var(--surface-surface-brand-secondary);
-        }
+::ng-deep .p-dropdown.p-disabled {
+  opacity: 0.45 !important;
+  background: var(--white) !important;
+}
 
-        &-active {
-            color: var(--text-text-brand-primary);
-            background-color: var(--surface-surface-brand-secondary);
-        }
-    }
+::ng-deep .p-dropdown-label {
+  color: var(--text-primary) !important;
+}
 
-    &__option:last-child {
-        margin-bottom: 0.25rem;
-    }
+::ng-deep .p-dropdown-item {
+  color: var(--black) !important;
+  padding: 15px;
+  background-color: white !important;
+}
 
-    &-active {
-        display: flex;
-    }
+::ng-deep .p-dropdown-panel {
+  background: var(--white) !important;
+  border: 1px solid var(--white) !important;
+}
 
-    &::-webkit-scrollbar {
-        height: 0.25rem;
-        width: 0.25rem;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: var(--border-border-neutral-secondary);
-        border-radius: 0.375rem;
-
-        &:hover {
-            background: #555;
-        }
-    }
+::ng-deep .p-dropdown-item:not(.p-dropdown-item-selected):not(.p-disabled).p-focus {
+  background: var(--neutral-100) !important;
+  padding: 15px;
+  background-color: white !important;
 }

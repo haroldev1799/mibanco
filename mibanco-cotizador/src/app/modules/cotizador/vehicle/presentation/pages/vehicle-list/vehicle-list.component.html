@@ -1,13 +1,11 @@
 <div class="custom-table">
-    <p-table #dt1 [value]="[]" class="custom-table__table">
+    <p-table #dt1 [value]="quotes" class="custom-table__table">
         <ng-template pTemplate="caption">
             <div class="custom-header">
                 <div class="custom-header__bar">
-                    <!-- Right header search -->
                     <div class="custom-header__search custom-search">
                         <app-input
                             class="custom-search__input"
-                            [data]="searchInput"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path
@@ -25,26 +23,11 @@
                         </div>
                     </div>
                     <!-- Left header buttons -->
-                    <div class="custom-header__button-group">
+                    <div class="custom-header__button">
                         <app-button
-                            [data]="BUTTON_DATA.AGREGAR" />
+                            [data]="BUTTON_DATA.AGREGAR" (click)="cotizar()" />
                     </div>
                 </div>
-                <!-- State buttons -->
-                <!-- <div class="custom-header__tab-group scroll-x">
-                    @for (invoiceStatus of invoiceStatusTab; track invoiceStatus) {
-                        <div
-                            *appUserType="invoiceStatus.permission"
-                            class="custom-tab"
-                            [ngClass]="{
-                                'custom-tab-active': invoiceStatus.active,
-                            }"
-                            (click)="handleTabOpen(invoiceStatus)">
-                            <span>{{ invoiceStatus.label }}</span>
-                        </div>
-                    }
-                    <div class="line"></div>
-                </div> -->
             </div>
         </ng-template>
 
@@ -61,18 +44,12 @@
 
         <ng-template pTemplate="body" let-invoice>
             <tr>
-                <td>
-                  
-                </td>
-                <td>{{ invoice.id }}</td>
-                <td>{{ invoice.invoice_number }}</td>
-                <td>{{ invoice.name }}</td>
-                <td>{{ invoice.discount_rate | percent: '1.2-2' }}</td>
-                <td>{{ invoice.retention_rate | percent: '1.2-2' }}</td>
-                <td>{{ invoice.approval_date ? (invoice.approval_date | date: 'dd/MM/yyyy') : '-' }}</td>
-                <td>
-                 
-                </td>
+                <td>{{ invoice.brand }}</td>
+                <td>{{ invoice.model }}</td>
+                <td>{{ invoice.year }}</td>
+                <td>{{ invoice.useType }}</td>
+                <td>{{ invoice.edad }}</td>
+                <td>{{ invoice.primaTotal }}</td>
             </tr>
         </ng-template>
 
@@ -93,3 +70,64 @@
 
 </div>
 
+<p-dialog header='Cotizar vehículo' [modal]="true" [(visible)]="showModalForm">
+    <!-- <span class="p-text-secondary block mb-5">Update your information.</span> -->
+    <div class="flex flex-column align-items-start gap-3 mb-3">
+        <div class="flex gap-3">
+            <app-select
+                label="Vehiculo"
+                labelAlternative="Vehiculo"
+                [options]="optionsVehicle"
+                [control]="formGroup.controls['vehicle']"
+                placeholder="Seleccionar"
+                (changeValue)="changeVehicle($event)"
+                size="large"
+            ></app-select>
+            <app-input
+                label="Tipo de uso"
+                labelAlternative="Tipo de uso"
+                [control]="formGroup.controls['useType']"
+                placeholder="Tipo de uso"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3">
+            <app-input-number
+                label="Año"
+                labelAlternative="Año"
+                [min]="2000"
+                [max]="2030"
+                [control]="formGroup.controls['year']"
+                placeholder="Año"
+                size="large"
+            ></app-input-number>
+            <app-input
+                label="Descripcion"
+                labelAlternative="Descripcion"
+                [control]="formGroup.controls['description']"
+                placeholder="Descripcion"
+                size="large"
+            ></app-input>
+        </div>
+        <div class="flex gap-3 justify-content-start">
+            <app-input-number
+                label="Edad"
+                labelAlternative="Edad"
+                [control]="formGroup.controls['edad']"
+                placeholder="Edad"
+                [min]="18"
+                [max]="90"
+                size="large"
+            ></app-input-number>
+        </div>
+        
+        <div class="flex gap-3 justify-content-center w-full">
+            @if(img) {
+                <img [src]="img" height="200" style="border-radius: 20px;">
+            }
+        </div>
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <app-button [data]="BUTTON_DATA.COTIZAR" (click)="saveCotizar()" [disabled]="formGroup.invalid"/>
+    </div>
+</p-dialog>

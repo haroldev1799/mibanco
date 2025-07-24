@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { ModalLoaderComponent } from '@components/molecules/modals/modal-loader/modal-loader.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CotizadorProviders } from '@modules/cotizador/cotizador.provider';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CotizadorProviders } from '@modules/cotizador/cotizador.provider';
     CommonModule,
     RouterModule,
     ModalLoaderComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 	providers: [

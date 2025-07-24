@@ -1,11 +1,13 @@
 import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { VehicleRepository } from '../domain/repository/vehicle.repository';
 import { URL_BACKEND } from '@core/config/url';
 import { HttpBaseResponse } from '@shared/types/response-http.type';
-import { VehicleListResponse } from '../domain/dto/vehicle.dto';
-
+import { Vehicle, VehicleListResponse } from '../domain/dto/vehicle.dto';
+import { storageGet, storageRegister } from '@shared/services/local-storage.service';
+import { StorageValueKey } from '@core/enums/storage.enum';
+import { v4 as uuidv4 } from 'uuid';
 
 export class VehicleRepositoryService extends VehicleRepository {
 	private readonly http = inject(HttpClient);
@@ -13,16 +15,37 @@ export class VehicleRepositoryService extends VehicleRepository {
 
     list(): Observable<VehicleListResponse> {
 		// return this.http.get<UserListResponse>(`${this.userUrl}/${uuid}/subUser${endpoint}`);
-        throw new Error('Method not implemented.');
+        const data = storageGet(StorageValueKey.QUOTE_STORE) ?? [];
+        return of({
+            status: 200,
+            success: true,
+            message: '',
+            data: data
+        });
 	}
 
-    create(): Observable<HttpBaseResponse> {
-        throw new Error('Method not implemented.');
+    create(data: Vehicle): Observable<HttpBaseResponse> {
+        console.log(data, ' data')
+        const dataDB: Vehicle[] = storageGet(StorageValueKey.QUOTE_STORE) ?? [];
+        data.id = uuidv4();
+        dataDB.push(data);
+        storageRegister(StorageValueKey.QUOTE_STORE, dataDB);
+        return of({
+            status: 200,
+            success: true,
+            message: '',
+        });
     }
-    update(): Observable<HttpBaseResponse> {
-        throw new Error('Method not implemented.');
-    }
-    delete(): Observable<HttpBaseResponse> {
-        throw new Error('Method not implemented.');
-    }
+
+    getVehicules(): Observable<VehicleListResponse> {
+		// return this.http.get<UserListResponse>(`${this.userUrl}/${uuid}/subUser${endpoint}`);
+        const data = storageGet(StorageValueKey.VEHICLE_STORE) ?? [];
+        return of({
+            status: 200,
+            success: true,
+            message: '',
+            data: data
+        });
+	}
+
 }
