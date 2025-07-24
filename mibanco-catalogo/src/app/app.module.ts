@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { ModalLoaderComponent } from '@components/molecules/modals/modal-loader/modal-loader.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CatalogoProviders } from '@modules/catalogo/catalogo.provider';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CatalogoProviders } from '@modules/catalogo/catalogo.provider';
     CommonModule,
     RouterModule,
     ModalLoaderComponent,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent],
 	providers: [
