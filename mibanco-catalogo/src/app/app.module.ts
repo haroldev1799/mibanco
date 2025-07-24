@@ -2,14 +2,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
-
-const routes: Routes = [
-  { path: '', component: AppComponent },
-];
+import { MessageService } from 'primeng/api';
+import { ModalLoaderComponent } from '@components/molecules/modals/modal-loader/modal-loader.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CatalogoProviders } from '@modules/catalogo/catalogo.provider';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [CommonModule, RouterModule, RouterModule.forChild(routes)],
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ModalLoaderComponent,
+    AppRoutingModule
+  ],
   bootstrap: [AppComponent],
+	providers: [
+    MessageService,
+    CatalogoProviders
+  ],
 })
 export class AppModule {}
