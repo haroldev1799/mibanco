@@ -5,15 +5,9 @@
     font-size: 0.875rem;
     color: var(--text-text-neutral-primary);
     line-height: normal;
-    border: 1px solid var(--border-border-neutral-secondary);
 
     &:enabled:focus {
-        border: 1px solid var(--border-border-neutral-secondary);
         box-shadow: none;
-    }
-
-    &:hover {
-        border: 1px solid var(--border-border-neutral-secondary);
     }
 
     &::placeholder {
